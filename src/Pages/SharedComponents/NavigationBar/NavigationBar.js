@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../Assets/logo.jpg';
 import useAuth from '../../../hooks/useAuth';
 
 const NavigationBar = () => {
@@ -12,14 +11,10 @@ const NavigationBar = () => {
             <Navbar collapseOnSelect expand="lg" bg="dark" className="text-white">
                 <Container>
                     <Navbar.Brand as={NavLink} className="text-white" to="/home">
-                        <img
-                            alt=""
-                            src={logo}
-                            width="50"
-                            height="50"
-                            className="d-inline-block align-top rounded rounded-3"
-                        />{' '}
-                        E-GOVERNANCE
+                        <div className='d-flex align-items-center '>
+                            <i className="fab fa-elementor fa-2x"></i>
+                            <span>&nbsp; E-GOVERNANCE</span>
+                        </div>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
