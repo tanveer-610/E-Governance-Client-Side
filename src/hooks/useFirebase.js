@@ -73,7 +73,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://fathomless-tundra-00974.herokuapp.com/user/${user.email}`)
+        fetch(`http://localhost:5000/user/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -91,7 +91,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, methodName) => {
         const user = { email, displayName };
-        fetch('https://fathomless-tundra-00974.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: methodName,
             headers: {
                 'content-type': 'application/json'
