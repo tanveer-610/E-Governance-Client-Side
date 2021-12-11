@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import logo from '../../../Assets/bdLogo.svg';
 
 const NavigationBar = () => {
     const { user, logOut } = useAuth();
@@ -12,7 +13,7 @@ const NavigationBar = () => {
                 <Container>
                     <Navbar.Brand as={NavLink} className="text-white" to="/home">
                         <div className='d-flex align-items-center '>
-                            <i className="fab fa-elementor fa-2x"></i>
+                            <img src={logo} width='60' alt="" />
                             <span>&nbsp; E-GOVERNANCE</span>
                         </div>
                     </Navbar.Brand>

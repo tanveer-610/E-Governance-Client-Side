@@ -1,8 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AuthProvider from './context/AuthProvider/AuthProvider';
+import BirthCertificateApplication from './Pages/CitizenPages/BirthCertificateApplication/BirthCertificateApplication';
 import CitizenDashBoard from './Pages/CitizenPages/CitizenDashBoard/CitizenDashBoard';
 import CitizenSetProfile from './Pages/CitizenPages/CitizenSetProfile/CitizenSetProfile';
+import NIDApplication from './Pages/CitizenPages/NIDApplication/NIDApplication';
+import PassportApplication from './Pages/CitizenPages/PassportApplication/PassportApplication';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
@@ -32,6 +35,15 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <CitizenDashBoard />
+          </Route>
+          <Route path="/birthCertificateApply">
+            <BirthCertificateApplication />
+          </Route>
+          <Route path="/NIDApply">
+            <NIDApplication />
+          </Route>
+          <Route path="/passportApply">
+            <PassportApplication />
           </Route>
 
         </Switch>
