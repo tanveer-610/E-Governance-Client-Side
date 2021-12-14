@@ -15,11 +15,13 @@ const BirthCertificateApplication = () => {
     const [preUPName, setPreUPName] = useState("")
     const [preCVH, setPreCVH] = useState("")
     const history = useHistory()
+    const userEmail = user.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`http://localhost:5000/users/${userEmail}`)
             .then(res => res.json())
-            .then(data => setUserInfo())
+            .then(data => setUserInfo(data))
     }, [])
+    console.log(userInfo)
 
     const handlePreDistrictName = e => {
         setPreDistrictName(e.target.value);
