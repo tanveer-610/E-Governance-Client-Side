@@ -1,9 +1,115 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import bdLogo from '../../../Assets/bdLogo.svg';
+import useAuth from '../../../hooks/useAuth';
 import './PassportApplication.css';
 
 const PassportApplication = () => {
+    const { user } = useAuth();
+    const [userInfo, setUserInfo] = useState({});
+    const [preDistrictName, setPreDistrictName] = useState("")
+    const [prePoliceStation, setPrePoliceStation] = useState("")
+    const [prePostOffice, setPrePostOffice] = useState("")
+    const [prePostalCode, setPrePostalCode] = useState("")
+    const [preUPName, setPreUPName] = useState("")
+    const [preCVH, setPreCVH] = useState("")
+    const [passportValidity, setPassportValidity] = useState("")
+    const [passportPages, setPassportPages] = useState("")
+    const [passportDeliveryType, setPassportDeliveryType] = useState("")
+    const history = useHistory()
+    const userEmail = user.email;
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${userEmail}`)
+            .then(res => res.json())
+            .then(data => setUserInfo(data))
+    }, [])
+    const handlePreDistrictName = e => {
+        setPreDistrictName(e.target.value);
+    }
+
+    const handlePrePoliceStation = e => {
+        setPrePoliceStation(e.target.value)
+    }
+    const handlePrePostOffice = e => {
+        setPrePostOffice(e.target.value)
+    }
+    const handlePrePostalCode = e => {
+        const postalCode = Number(e.target.value)
+        if (isNaN(postalCode)) {
+            alert("Enter Valid Postal")
+            e.target.value = ""
+        }
+        else
+            setPrePostalCode(e.target.value)
+
+    }
+    const handlePreUPName = e => {
+        setPreUPName(e.target.value)
+    }
+    const handlePreCVH = e => {
+        setPreCVH(e.target.value)
+    }
+
+    const handleValidity = (e) => {
+        setPassportValidity(e.target.value)
+    }
+    const handlePages = (e) => {
+        setPassportPages(e.target.value)
+    }
+    const handleDeliveryType = (e) => {
+        setPassportDeliveryType(e.target.value)
+    }
+
+    const handleForm = e => {
+        if (preDistrictName !== "" && prePoliceStation !== "" && prePostOffice !== "" && prePostalCode !== "" && preUPName !== "" && preCVH !== "") {
+            const data = {
+                citizenEmail: user.email,
+                citizenFullName: userInfo.citizenFullName,
+                DOB: userInfo.DOB,
+                citizenGender: userInfo.citizenGender,
+                citizenReligion: userInfo.citizenReligion,
+                citizenMaritalStatus: userInfo.citizenMaritalStatus,
+                citizenContactNumber: userInfo.citizenContactNumber,
+                permanentDistrictName: userInfo.permanentDistrictName,
+                permanentPoliceStation: userInfo.permanentPoliceStation,
+                permanentPostOffice: userInfo.permanentPostOffice,
+                permanentPostalCode: userInfo.permanentPostalCode,
+                permanentUPName: userInfo.permanentUPName,
+                permanentCVH: userInfo.permanentCVH,
+                presentDistrictName: preDistrictName,
+                presentPoliceStation: prePoliceStation,
+                presentPostOffice: prePostOffice,
+                presentPostalCode: prePostalCode,
+                presentUPName: preUPName,
+                presentCVH: preCVH,
+                citizenFatherName: userInfo.citizenFatherName,
+                citizenFatherNID: userInfo.citizenFatherNID,
+                citizenMotherName: userInfo.citizenMotherName,
+                citizenMotherNID: userInfo.citizenMotherNID,
+                citizenPassportValidity: passportValidity,
+                citizenPassportPages: passportPages,
+                citizenPassportDeliveryType: passportDeliveryType,
+                issueDate: date
+            }
+            axios.post('http://localhost:5000/passportApplications', data)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        alert("Application has been Submitted");
+                        history.push('/dashboard');
+                    }
+                    else {
+                        alert("npe");
+                    }
+                })
+        }
+        else {
+            alert("Please Confirm the Permanent Address First")
+        }
+
+        e.preventDefault()
+    }
     var today = new Date();
     var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
     return (
@@ -17,29 +123,30 @@ const PassportApplication = () => {
                 <h2 className='mt-5 text-center'>Passport Application</h2>
                 <hr />
                 <p className='text-end text-muted'>Date of Apply: {date}</p>
-                <Form>
+                <Form onSubmit={handleForm}>
                     <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Personal Information</h4>
                     <div className='px-2'>
 
                         <Form.Group className="mb-3" controlId="formGridFullName">
                             <Form.Label className='fw-bold'>Full Name</Form.Label>
-                            <Form.Control readOnly placeholder="" />
+                            <Form.Control readOnly defaultValue={userInfo.citizenFullName} />
                         </Form.Group>
 
                         <Row className="mb-3 gx-3">
                             <Form.Group as={Col} controlId="formGridDOB">
                                 <Form.Label className='fw-bold'>Date Of Birth</Form.Label>
-                                <Form.Control type="date" placeholder="Date of Birth" />
+                                <Form.Control type="date" readOnly defaultValue={userInfo.DOB} />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridGender">
                                 <Form.Label className='fw-bold'>Gender</Form.Label> <br />
-                                <Form.Control type="text" placeholder="Gender" />
+                                <Form.Control defaultValue={userInfo.citizenGender} type="text" readOnly />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridReligion">
                                 <Form.Label className='fw-bold'>Religion</Form.Label>
-                                <Form.Control type="text" placeholder="Type your Religion Name" />
+                                <Form.Control type="text"
+                                    defaultValue={userInfo.citizenReligion} readOnly />
                             </Form.Group>
                         </Row>
 
@@ -52,32 +159,32 @@ const PassportApplication = () => {
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridPermaDistrict">
                                 <Form.Label className='fw-bold'>District Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your district Name" />
+                                <Form.Control defaultValue={userInfo.permanentDistrictName} type="text" readOnly />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPermaPoliceStation">
                                 <Form.Label className='fw-bold'>Police Station</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your police station" />
+                                <Form.Control type="text" defaultValue={userInfo.permanentPoliceStation} readOnly />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridPermaPostalOffice">
                                 <Form.Label className='fw-bold'>Post Office</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your post office" />
+                                <Form.Control type="text" defaultValue={userInfo.permanentPostOffice} readOnly />
                             </Form.Group>
                         </Row>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridPermaPostalCode">
                                 <Form.Label className='fw-bold'>Postal Code</Form.Label>
-                                <Form.Control type="number" placeholder="Enter your postal code" />
+                                <Form.Control type="number" defaultValue={userInfo.permanentPostalCode} readOnly />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPermaUP">
                                 <Form.Label className='fw-bold'>Union Name</Form.Label>
-                                <Form.Control type="text" placeholder="Write your UP Name" />
+                                <Form.Control type="text" defaultValue={userInfo.permanentUPName} readOnly />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPermaCityVillage">
                                 <Form.Label className='fw-bold'>City/Village/House</Form.Label>
-                                <Form.Control type="text" placeholder="City/Village/House" />
+                                <Form.Control type="text" defaultValue={userInfo.permanentCVH} readOnly />
                             </Form.Group>
 
                         </Row>
@@ -87,32 +194,32 @@ const PassportApplication = () => {
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridDistrict">
                                 <Form.Label className='fw-bold'>District Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your district Name" />
+                                <Form.Control type="text" defaultValue={userInfo.presentDistrictName} onBlur={handlePreDistrictName} />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPoliceStation">
                                 <Form.Label className='fw-bold'>Police Station</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your police station" />
+                                <Form.Control type="text" defaultValue={userInfo.presentPoliceStation} onBlur={handlePrePoliceStation} />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridPostalOffice">
                                 <Form.Label className='fw-bold'>Post Office</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your post office" />
+                                <Form.Control type="text" defaultValue={userInfo.presentPostOffice} onBlur={handlePrePostOffice} />
                             </Form.Group>
                         </Row>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridPostalCode">
                                 <Form.Label className='fw-bold'>Postal Code</Form.Label>
-                                <Form.Control type="number" placeholder="Enter your postal code" />
+                                <Form.Control type="number" defaultValue={userInfo.presentPostalCode} onBlur={handlePrePostalCode} />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridUP">
                                 <Form.Label className='fw-bold'>Union Name</Form.Label>
-                                <Form.Control type="text" placeholder="Write your UP Name" />
+                                <Form.Control type="text" defaultValue={userInfo.presentUPName} onBlur={handlePreUPName} />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridCityVillage">
                                 <Form.Label className='fw-bold'>City/Village/House</Form.Label>
-                                <Form.Control type="text" placeholder="City/Village/House" />
+                                <Form.Control type="text" defaultValue={userInfo.presentCVH} onBlur={handlePreCVH} />
                             </Form.Group>
 
                         </Row>
@@ -124,21 +231,21 @@ const PassportApplication = () => {
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridFatherName">
                                 <Form.Label className='fw-bold'>Father's Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your Father's Name" />
+                                <Form.Control type="text" defaultValue={userInfo.citizenFatherName} readOnly />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridFatherNID">
                                 <Form.Label className='fw-bold'>Father's NID</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your Father's NID" />
+                                <Form.Control type="text" defaultValue={userInfo.citizenFatherNID} readOnly />
                             </Form.Group>
                         </Row>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridMotherName">
                                 <Form.Label className='fw-bold'>Mother's Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your Mother's Name" />
+                                <Form.Control type="text" defaultValue={userInfo.citizenMotherName} readOnly />
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridMotherNID">
                                 <Form.Label className='fw-bold'>Mother's NID</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your Mother's NID" />
+                                <Form.Control type="text" defaultValue={userInfo.citizenMotherNID} readOnly />
                             </Form.Group>
                         </Row>
                     </div>
@@ -148,28 +255,28 @@ const PassportApplication = () => {
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridValidity">
                                 <Form.Label className='fw-bold'>Validity</Form.Label>
-                                <Form.Select defaultValue="Choose One">
-                                    <option>Choose One...</option>
-                                    <option>5 Years</option>
-                                    <option>10 Years</option>
+                                <Form.Select defaultValue="Choose One" onChange={handleValidity}>
+                                    <option value="">Choose One...</option>
+                                    <option value="5 Years">5 Years</option>
+                                    <option value="10 Years">10 Years</option>
                                 </Form.Select>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPages">
                                 <Form.Label className='fw-bold'>Pages</Form.Label>
-                                <Form.Select defaultValue="Choose One">
-                                    <option>Choose One...</option>
-                                    <option>48 Pages</option>
-                                    <option>64 Pages</option>
+                                <Form.Select defaultValue="Choose One" onChange={handlePages}>
+                                    <option value="">Choose One...</option>
+                                    <option value="48 Pages">48 Pages</option>
+                                    <option value="64 Pages">64 Pages</option>
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridType">
                                 <Form.Label className='fw-bold'>Delivery Type</Form.Label>
-                                <Form.Select defaultValue="Choose One">
-                                    <option>Choose One...</option>
-                                    <option>Normal</option>
-                                    <option>Express</option>
-                                    <option>Super Express</option>
+                                <Form.Select defaultValue="Choose One" onChange={handleDeliveryType}>
+                                    <option value="">Choose One...</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Express">Express</option>
+                                    <option value="Super Express">Super Express</option>
                                 </Form.Select>
                             </Form.Group>
                         </Row>
