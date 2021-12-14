@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
@@ -120,19 +121,56 @@ const CitizenSetProfile = () => {
     }
 
     const handleForm = e => {
-        const data = {
-            citizenEmail: user.email,
-            citizenFullName: fullName,
-            DOB: dateOfBirth,
-            citizenGender: gender,
-            citizenReligion: religion,
+        if (fullName !== "" && dateOfBirth !== "" && gender !== "" && religion !== "" && perDistrictName !== "" && perPoliceStation !== "" && perPostOffice !== "" && perPostalCode !== "" && perUPName !== "" && perCVH !== "" && preDistrictName !== "" && prePoliceStation !== "" && prePostOffice !== "" && prePostalCode !== "" && preUPName !== "" && preCVH !== "" && fatherName !== "" && fatherNID !== "" && motherName !== "" && motherNID !== "") {
+
+            const data = {
+                citizenEmail: user.email,
+                citizenFullName: fullName,
+                DOB: dateOfBirth,
+                citizenGender: gender,
+                citizenReligion: religion,
+                citizenMaritalStatus: maritalStatus,
+                citizenContactNumber: contactNumber,
+                permanentDistrictName: perDistrictName,
+                permanentPoliceStation: perPoliceStation,
+                permanentPostOffice: perPostOffice,
+                permanentPostalCode: perPostalCode,
+                permanentUPName: perUPName,
+                permanentCVH: perCVH,
+                presentDistrictName: preDistrictName,
+                presentPoliceStation: prePoliceStation,
+                presentPostOffice: prePostOffice,
+                presentPostalCode: prePostalCode,
+                presentUPName: preUPName,
+                presentCVH: preCVH,
+                citizenFatherName: fatherName,
+                citizenFatherNID: fatherNID,
+                citizenMotherName: motherName,
+                citizenMotherNID: motherNID
+            }
+
+            axios.put(`http://localhost:5000/user/${user.email}`, data)
+                .then(response => {
+                    alert('Updated Successfully')
+                })
+                .catch(error => {
+                    alert('Not Updated')
+                    console.log(error);
+                });
+            e.target.value = ""
+        }
+
+        else {
+            alert("Enter All Value")
         }
 
         e.preventDefault()
     }
 
+
     return (
         <Container className='my-3 shadow shadow-lg p-3 rounded rounded-3 border border-4'>
+            <h1 className="text-center mb-3">Set Your Profile</h1>
             <Form onSubmit={handleForm}>
                 <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Personal Information</h4>
                 <div className='px-2'>
