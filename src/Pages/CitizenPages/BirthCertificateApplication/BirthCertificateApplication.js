@@ -21,8 +21,6 @@ const BirthCertificateApplication = () => {
             .then(res => res.json())
             .then(data => setUserInfo(data))
     }, [])
-    console.log(userInfo)
-
     const handlePreDistrictName = e => {
         setPreDistrictName(e.target.value);
     }
@@ -73,7 +71,8 @@ const BirthCertificateApplication = () => {
                 citizenFatherName: userInfo.citizenFatherName,
                 citizenFatherNID: userInfo.citizenFatherNID,
                 citizenMotherName: userInfo.citizenMotherName,
-                citizenMotherNID: userInfo.citizenMotherNID
+                citizenMotherNID: userInfo.citizenMotherNID,
+                issueDate: date
             }
             axios.post('http://localhost:5000/birthApplications', data)
                 .then(res => {
