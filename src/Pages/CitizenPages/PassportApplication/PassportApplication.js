@@ -91,7 +91,10 @@ const PassportApplication = () => {
                 citizenPassportValidity: passportValidity,
                 citizenPassportPages: passportPages,
                 citizenPassportDeliveryType: passportDeliveryType,
-                issueDate: date
+                applicationType: "Passport",
+                applicationStatus: "pending",
+                issueDate: date,
+                approvedDate: ""
             }
             axios.post('http://localhost:5000/passportApplications', data)
                 .then(res => {
@@ -189,8 +192,9 @@ const PassportApplication = () => {
 
                         </Row>
                     </div>
-                    <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Present Address</h4>
-                    <div className='px-2'>
+                    <h4 className='border border-3 mt-4 pt-2 bg-dark text-light'>Present Address</h4>
+                    <small>***Confirm Present address by clicking Every field of this segment***</small>
+                    <div className='px-2 mt-4'>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridDistrict">
                                 <Form.Label className='fw-bold'>District Name</Form.Label>

@@ -72,7 +72,10 @@ const BirthCertificateApplication = () => {
                 citizenFatherNID: userInfo.citizenFatherNID,
                 citizenMotherName: userInfo.citizenMotherName,
                 citizenMotherNID: userInfo.citizenMotherNID,
-                issueDate: date
+                applicationType: "Birth Certificate",
+                applicationStatus: "pending",
+                issueDate: date,
+                approvedDate: ""
             }
             axios.post('http://localhost:5000/birthApplications', data)
                 .then(res => {
@@ -86,7 +89,7 @@ const BirthCertificateApplication = () => {
                 })
         }
         else {
-            alert("Please Confirm the Permanent Address First")
+            alert("Please Confirm the Present Address First")
         }
 
         e.preventDefault()

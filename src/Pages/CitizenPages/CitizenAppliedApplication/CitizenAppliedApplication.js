@@ -1,0 +1,29 @@
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import useAuth from '../../../hooks/useAuth';
+import CitizenSingleAppliedApplication from './CitizenSingleAppliedApplication/CitizenSingleAppliedApplication';
+
+const CitizenAppliedApplication = () => {
+    const { user } = useAuth();
+    const [applications, setApplications] = useState([])
+    const userEmail = user.email;
+    useEffect(() => {
+        fetch(`http://localhost:5000/applications`)
+            .then(res => res.json())
+            .then(data => setApplications(data))
+    }, [])
+    const citizenApplications = applications.filter(application => (userEmail === application.citizenEmail))
+
+    return (
+        <Container>
+            <h2 className='text-center'>Applied Application</h2>
+            <div className="mt-4">
+                {
+                    citizenApplications.map(application => <CitizenSingleAppliedApplication key={application._id} application={application}></CitizenSingleAppliedApplication>)
+                }
+            </div>
+        </Container>
+    );
+};
+
+export default CitizenAppliedApplication;
