@@ -58,6 +58,8 @@ const NIDApplication = () => {
                 DOB: userInfo.DOB,
                 citizenGender: userInfo.citizenGender,
                 citizenReligion: userInfo.citizenReligion,
+                citizenMaritalStatus: userInfo.citizenMaritalStatus,
+                citizenContactNumber: userInfo.citizenContactNumber,
                 permanentDistrictName: userInfo.permanentDistrictName,
                 permanentPoliceStation: userInfo.permanentPoliceStation,
                 permanentPostOffice: userInfo.permanentPostOffice,
