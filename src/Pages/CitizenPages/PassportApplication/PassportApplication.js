@@ -96,7 +96,7 @@ const PassportApplication = () => {
                 issueDate: date,
                 approvedDate: ""
             }
-            axios.post('http://localhost:5000/passportApplications', data)
+            axios.post('http://localhost:5000/allApplications', data)
                 .then(res => {
                     if (res.data.insertedId) {
                         alert("Application has been Submitted");
