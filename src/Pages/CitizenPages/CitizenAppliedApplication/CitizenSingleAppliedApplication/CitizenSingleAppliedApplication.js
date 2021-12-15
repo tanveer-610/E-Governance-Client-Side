@@ -2,32 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'react-bootstrap';
-import useAuth from '../../../../hooks/useAuth';
 
 const CitizenSingleAppliedApplication = (props) => {
-    const { user } = useAuth();
-    const { applicationType, applicationStatus
+
+    const { _id, applicationType, applicationStatus
         , issueDate, approvedDate } = props.application
     const deleteButton = <FontAwesomeIcon icon={faTrashAlt} />
-    const [applications, setApplications] = useState([]);
-    const userEmail = user.email;
+    const [allApplication, setAllApplication] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/applications`)
             .then(res => res.json())
-            .then(data => setApplications(data))
+            .then(data => setAllApplication(data))
     }, [])
-    const handleDelete = e => {
-        const procceed = window.confirm("Are you sure? If you are... Click on Confirm.")
+    console.log(allApplication)
+    const handleDelete = _id => {
+        const procceed = window.confirm("Are you sure? If you are... Click OK")
         if (procceed) {
-            const url = `http://localhost:5000/applicationDelete/${userEmail}`;
+            const url = `http://localhost:5000/applicationDelete/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount) {
-                        const remaining = applications.filter(application => application.email !== userEmail);
-                        setApplications(remaining);
+                        alert("Delation process" + _id);
+                        const remaining = allApplication.filter(application => (application._id) !== _id);
+                        setAllApplication(remaining);
                         alert("data is deleted");
                     }
                 })
@@ -45,7 +45,7 @@ const CitizenSingleAppliedApplication = (props) => {
                     </div>
                     <div className="col-md-6 col-sm-12 text-end">
                         {
-                            applicationStatus === "pending" ? <button className='p-0 m-0 fs-4 border border-0 text-dark' onClick={handleDelete}>{deleteButton}</button> : <p>Approved Date: {approvedDate}</p>
+                            applicationStatus === "pending" ? <button className='p-0 m-0 fs-4 border border-0 text-dark' onClick={() => handleDelete(_id)}>{deleteButton}</button> : <p>Approved Date: {approvedDate}</p>
                         }
                     </div>
 
