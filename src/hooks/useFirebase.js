@@ -71,12 +71,12 @@ const useFirebase = () => {
         });
         return () => unsubscribe;
     }, [auth])
-
+    const userEmail = user.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user.email}`)
+        fetch(`http://localhost:5000/user/${userEmail}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
-    }, [user.email])
+    }, [userEmail])
 
     const logOut = () => {
 

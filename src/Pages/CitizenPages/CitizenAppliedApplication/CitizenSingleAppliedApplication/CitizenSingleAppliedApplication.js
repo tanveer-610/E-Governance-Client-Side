@@ -1,34 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import CitizenSingleAppliedApplicationModal from './CitizenSingleAppliedApplicationModal/CitizenSingleAppliedApplicationModal';
 
 const CitizenSingleAppliedApplication = (props) => {
 
     const { _id, applicationType, applicationStatus
         , issueDate, approvedDate } = props.application
     const deleteButton = <FontAwesomeIcon icon={faTrashAlt} />
+    const showButton = <FontAwesomeIcon icon={faEye} />
     const [allApplication, setAllApplication] = useState([]);
+    const [modalShow, setModalShow] = React.useState(false);
+    const history = useHistory()
     useEffect(() => {
         fetch(`http://localhost:5000/applications`)
             .then(res => res.json())
             .then(data => setAllApplication(data))
     }, [])
-    console.log(allApplication)
-    const handleDelete = _id => {
+    const handleDelete = id => {
         const procceed = window.confirm("Are you sure? If you are... Click OK")
         if (procceed) {
-            const url = `http://localhost:5000/applicationDelete/${_id}`;
+            const url = `http://localhost:5000/applicationDelete/${id}`;
+
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount) {
-                        alert("Delation process" + _id);
-                        const remaining = allApplication.filter(application => (application._id) !== _id);
+                        const remaining = allApplication.filter(application => (application._id) !== id);
                         setAllApplication(remaining);
                         alert("data is deleted");
+                        //reload page
+                        history.go(0)
                     }
                 })
         }
@@ -45,7 +51,15 @@ const CitizenSingleAppliedApplication = (props) => {
                     </div>
                     <div className="col-md-6 col-sm-12 text-end">
                         {
-                            applicationStatus === "pending" ? <button className='p-0 m-0 fs-4 border border-0 text-dark' onClick={() => handleDelete(_id)}>{deleteButton}</button> : <p>Approved Date: {approvedDate}</p>
+                            applicationStatus === "pending" ? <button className='p-0 m-0 fs-4 border border-0 text-dark bg-white' onClick={() => handleDelete(_id)}>{deleteButton}</button> : <div><span>Approved Date: {approvedDate} </span><button className='p-0 m-0 fs-4 border border-0 text-dark bg-white' onClick={() => setModalShow(true)} >
+                                {showButton}
+                            </button>
+
+                                <CitizenSingleAppliedApplicationModal
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                                    applicationId={_id}
+                                /></div>
                         }
                     </div>
 
