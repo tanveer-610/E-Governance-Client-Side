@@ -76,7 +76,10 @@ const NIDApplication = () => {
                 citizenFatherNID: userInfo.citizenFatherNID,
                 citizenMotherName: userInfo.citizenMotherName,
                 citizenMotherNID: userInfo.citizenMotherNID,
-                issueDate: date
+                applicationType: "NID",
+                applicationStatus: "pending",
+                issueDate: date,
+                approvedDate: ""
             }
             axios.post('http://localhost:5000/nidApplications', data)
                 .then(res => {
@@ -90,7 +93,7 @@ const NIDApplication = () => {
                 })
         }
         else {
-            alert("Please Confirm the Permanent Address First")
+            alert("Please Confirm the Present Address First")
         }
 
         e.preventDefault()
