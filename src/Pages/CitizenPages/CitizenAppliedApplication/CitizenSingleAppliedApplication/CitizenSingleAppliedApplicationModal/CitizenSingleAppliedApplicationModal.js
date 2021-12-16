@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Modal } from 'react-bootstrap';
 import bdLogo from '../../../../../Assets/bdLogo.svg';
 import qr from '../../../../../Assets/QR.jpg';
+import user from '../../../../../Assets/user.png'
 import './CitizenSingleAppliedApplicationModal.css';
 
 const CitizenSingleAppliedApplicationModal = (props) => {
@@ -12,6 +13,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
             .then(res => res.json())
             .then(data => setAllApplicationsInfo(data))
     }, [])
+    console.log(allApplicationsInfo)
     return (
         <div>
             <Modal
@@ -26,60 +28,59 @@ const CitizenSingleAppliedApplicationModal = (props) => {
 
 
                     {/* birth Certificate show */}
-                    {/* 
-                    <Container className='my-3 shadow shadow-lg p-3 rounded rounded-3 border border-4'>
-                        <div className='text-center'>
-                            <img src={bdLogo} className='' width='65' alt="" />
-                            <h4 className='my-2'>People’s Republic of Bangladesh</h4>
-                            <h6>Office of the Registrar of Birth and Death</h6>
-                            <p>{allApplicationsInfo.permanentUPName} Union Parishad</p>
-                            <p>{allApplicationsInfo.permanentPoliceStation}, {allApplicationsInfo.permanentDistrictName}, Bangladesh</p>
-                        </div>
-                        <div className='birthApplyBg'>
-                            <h2 className='my-5 text-center'>Birth Certificate</h2>
-                            <p className='mt-5'>Registration No: { }</p>
 
-                            <div className='d-flex align-items-center justify-content-between mb-4'>
-                                <p>Registration Date: {allApplicationsInfo.issueDate}</p>
-                                <p>Certificate Issue Date: { }</p>
+                    {
+                        allApplicationsInfo.applicationType === "Birth Certificate" && <Container className='my-3 shadow shadow-lg p-3 rounded rounded-3 border border-4'>
+                            <div className='text-center'>
+                                <img src={bdLogo} className='' width='65' alt="" />
+                                <h4 className='my-2'>People’s Republic of Bangladesh</h4>
+                                <h6>Office of the Registrar of Birth and Death</h6>
+                                <p>{allApplicationsInfo.permanentUPName} Union Parishad</p>
+                                <p>{allApplicationsInfo.permanentPoliceStation}, {allApplicationsInfo.permanentDistrictName}, Bangladesh</p>
                             </div>
-                            <p><span className='fw-bold'>Personal Identification No:</span> {applicationId}</p>
-                            <p className='mt-5'><span className='fw-bold'>Name:</span> {allApplicationsInfo.citizenFullName}</p>
+                            <div className='birthApplyBg'>
+                                <h2 className='my-5 text-center'>Birth Certificate</h2>
+                                <p className='mt-5'>Registration No: { }</p>
 
-                            <div className='d-flex align-items-center justify-content-between'>
-                                <p><span className='fw-bold'>Date of Birth:</span> {allApplicationsInfo.DOB}</p>
-                                <p><span className='fw-bold'>Gender:</span> {allApplicationsInfo.citizenGender}</p>
+                                <div className='d-flex align-items-center justify-content-between mb-4'>
+                                    <p>Registration Date: {allApplicationsInfo.issueDate}</p>
+                                    <p>Certificate Issue Date: { }</p>
+                                </div>
+                                <p><span className='fw-bold'>Personal Identification No:</span> {applicationId}</p>
+                                <p className='mt-5'><span className='fw-bold'>Name:</span> {allApplicationsInfo.citizenFullName}</p>
+
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <p><span className='fw-bold'>Date of Birth:</span> {allApplicationsInfo.DOB}</p>
+                                    <p><span className='fw-bold'>Gender:</span> {allApplicationsInfo.citizenGender}</p>
+                                </div>
+
+
+                                <div>
+                                    <p><span className='fw-bold'>Place Of Birth:</span> City/Village/House: {allApplicationsInfo.permanentCVH}, <br /> Police Station- {allApplicationsInfo.permanentPoliceStation}, District- {allApplicationsInfo.permanentDistrictName}</p>
+                                </div>
+
+                                <div className='d-flex align-items-center justify-content-between mt-5'>
+                                    <p><span className='fw-bold'>Father's Name:</span> {allApplicationsInfo.citizenFatherName}</p>
+                                    <p><span className='fw-bold'>Nationality:</span> Bangladeshi</p>
+                                </div>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <p><span className='fw-bold'>Mothers's Name:</span> {allApplicationsInfo.citizenMotherName}</p>
+                                    <p><span className='fw-bold'>Nationality:</span> Bangladeshi</p>
+                                </div>
+                                <div className='mb-5'>
+                                    <p><span className='fw-bold'>Permannent Address:</span> City/Village/House- {allApplicationsInfo.permanentCVH}, <br /> Police Station- {allApplicationsInfo.permanentPoliceStation}, District- {allApplicationsInfo.permanentDistrictName}</p>
+                                </div>
+
+                                <div className='py-4 text-end'>
+                                    <small>Authorized By: {allApplicationsInfo.permanentUPName} UP Secretary.</small>
+                                </div>
+                                <small>{applicationId}</small>
                             </div>
-
-
-                            <div>
-                                <p><span className='fw-bold'>Place Of Birth:</span> City/Village/House: {allApplicationsInfo.permanentCVH}, <br /> Police Station- {allApplicationsInfo.permanentPoliceStation}, District- {allApplicationsInfo.permanentDistrictName}</p>
-                            </div>
-
-                            <div className='d-flex align-items-center justify-content-between mt-5'>
-                                <p><span className='fw-bold'>Father's Name:</span> {allApplicationsInfo.citizenFatherName}</p>
-                                <p><span className='fw-bold'>Nationality:</span> Bangladeshi</p>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-between'>
-                                <p><span className='fw-bold'>Mothers's Name:</span> {allApplicationsInfo.citizenMotherName}</p>
-                                <p><span className='fw-bold'>Nationality:</span> Bangladeshi</p>
-                            </div>
-                            <div className='mb-5'>
-                                <p><span className='fw-bold'>Permannent Address:</span> City/Village/House- {allApplicationsInfo.permanentCVH}, <br /> Police Station- {allApplicationsInfo.permanentPoliceStation}, District- {allApplicationsInfo.permanentDistrictName}</p>
-                            </div>
-
-                            <div className='py-4 text-end'>
-                                <small>Authorized By: {allApplicationsInfo.permanentUPName} UP Secretary.</small>
-                            </div>
-                            <small>{applicationId}</small>
-                        </div>
-                    </Container> */}
-
-
-
+                        </Container>
+                    }
 
                     {/* NID Show */}
-                    {/* <Container>
+                    {allApplicationsInfo.applicationType === "NID" && <Container>
                         <div className='border border-2 shadow shadow-lg p-2 mb-5 rounded rounded-2 NIDbg'>
                             <div className='row justify-content-between align-items-center mb-5'>
                                 <div className="col-sm-1">
@@ -91,9 +92,9 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                                 </div>
                             </div>
 
-                            <div className='row mt-3'>
+                            <div className='row mt-3 gx-3'>
                                 <div className="col-sm-4">
-                                    <img src="" alt="" />
+                                    <img src={user} className='img-fluid' alt="" />
                                 </div>
                                 <div className="col-sm-8 ">
                                     <p><span className='fw-bold'>Name: </span>{allApplicationsInfo.citizenFullName}</p>
@@ -116,13 +117,13 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                             <p className='text-end'> <small>Approved Date: { }</small></p>
 
                         </div>
-                    </Container> */}
+                    </Container>}
 
 
 
 
                     {/* Passport View */}
-                    <Container>
+                    {allApplicationsInfo.applicationType === "Passport" && <Container>
                         <div className='border border-2 shadow shadow-lg p-2 mb-5 rounded rounded-2 passportBg'>
                             <div className='text-center'>
                                 <div className='row justify-content-between align-items-center'>
@@ -135,9 +136,9 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                                 </div>
                             </div>
                             <h4 className='text-center my-4'>Passport</h4>
-                            <div className='row justify-content-between align-items-center'>
+                            <div className='row justify-content-between align-items-center gx-3'>
                                 <div className='col-sm-3'>
-
+                                    <img src={user} className='img-fluid' alt="" />
                                 </div>
                                 <div className='col-sm-9'>
                                     <div className="row">
@@ -176,6 +177,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                             </div>
                         </div>
                     </Container>
+                    }
 
 
                 </Modal.Body>

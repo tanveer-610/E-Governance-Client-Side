@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
 
 const CitizenSetProfile = () => {
@@ -27,6 +28,7 @@ const CitizenSetProfile = () => {
     const [fatherNID, setFatherNID] = useState("")
     const [motherName, setMotherName] = useState("")
     const [motherNID, setMotherNID] = useState("")
+    const history = useHistory()
 
 
     //Catch value from the input field. 
@@ -152,6 +154,7 @@ const CitizenSetProfile = () => {
             axios.put(`http://localhost:5000/user/${user.email}`, data)
                 .then(response => {
                     alert('Updated Successfully')
+                    history.push('/dashboard')
                 })
                 .catch(error => {
                     alert('Not Updated')

@@ -16,7 +16,7 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
 
-                const newUser = { email, displayName: name };
+                const newUser = { email, displayName: name, role: "" };
                 setUser(newUser);
                 //save user to database
                 saveUser(email, name, "POST");
@@ -90,7 +90,7 @@ const useFirebase = () => {
     }
 
     const saveUser = (email, displayName, methodName) => {
-        const user = { email, displayName };
+        const user = { email, displayName, role: "" };
         fetch('http://localhost:5000/users', {
             method: methodName,
             headers: {

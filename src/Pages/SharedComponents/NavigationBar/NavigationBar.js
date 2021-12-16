@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -6,6 +6,13 @@ import logo from '../../../Assets/bdLogo.svg';
 
 const NavigationBar = () => {
     const { user, logOut } = useAuth();
+    const [userInfo, setUserInfo] = useState({});
+    const userEmail = user.email;
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${userEmail}`)
+            .then(res => res.json())
+            .then(data => setUserInfo(data))
+    }, [user.email])
     return (
 
         <div>
@@ -20,14 +27,18 @@ const NavigationBar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
+                            {
+                                userInfo?.role === "admin" && <><Nav.Link as={NavLink} to="/upDashboard" className="text-white">UP Dashboard</Nav.Link><Nav.Link as={NavLink} className="text-white" to="/addUP">Add UP</Nav.Link></>
+                            }
+                            {
+                                userInfo?.role === "" && <Nav.Link as={NavLink} className="text-white" to="/dashboard">Dashboard</Nav.Link>
+                            }
 
                             {
                                 user?.email ?
                                     <>
-                                        <Nav.Link as={NavLink} className="text-white" to="/dashboard">Dashboard</Nav.Link>
                                         <Nav.Link as={NavLink} onClick={logOut} to="/home" className="text-white">Log Out</Nav.Link>
                                     </>
-
                                     :
                                     <Nav.Link as={NavLink} className="text-white" to="/login">Log in</Nav.Link>
                             }

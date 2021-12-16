@@ -10,6 +10,8 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import NavigationBar from './Pages/SharedComponents/NavigationBar/NavigationBar';
+import AddUP from './Pages/UPPages/AddUP/AddUP';
+import UPDashboard from './Pages/UPPages/UPDashboard/UPDashboard';
 
 
 function App() {
@@ -44,6 +46,12 @@ function App() {
           </Route>
           <Route path="/passportApply">
             <PassportApplication />
+          </Route>
+          <Route path="/upDashboard">
+            <UPDashboard />
+          </Route>
+          <Route path="/addUP">
+            <AddUP />
           </Route>
 
         </Switch>
