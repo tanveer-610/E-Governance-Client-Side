@@ -249,7 +249,6 @@ const CitizenSetProfile = () => {
                                 <option value="Divorced">Divorced</option>
                                 <option value="Widowed">Widowed</option>
                             </Form.Select>
-                            <Form.Label className='fw-bold'>{maritalStatus}</Form.Label>
                         </Form.Group>
                     </Row>
 

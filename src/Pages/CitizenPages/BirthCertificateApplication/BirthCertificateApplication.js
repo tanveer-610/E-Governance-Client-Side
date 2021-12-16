@@ -48,6 +48,7 @@ const BirthCertificateApplication = () => {
     const handlePreCVH = e => {
         setPreCVH(e.target.value)
     }
+    var randomValue = Math.floor((Math.random() * 1000000000) + 1);
 
     const handleForm = e => {
         if (preDistrictName !== "" && prePoliceStation !== "" && prePostOffice !== "" && prePostalCode !== "" && preUPName !== "" && preCVH !== "") {
@@ -73,6 +74,7 @@ const BirthCertificateApplication = () => {
                 citizenFatherNID: userInfo.citizenFatherNID,
                 citizenMotherName: userInfo.citizenMotherName,
                 citizenMotherNID: userInfo.citizenMotherNID,
+                registerNo: randomValue,
                 applicationType: "Birth Certificate",
                 applicationStatus: "pending",
                 issueDate: date,

@@ -6,7 +6,7 @@ import user from '../../../../../Assets/user.png'
 import './CitizenSingleAppliedApplicationModal.css';
 
 const CitizenSingleAppliedApplicationModal = (props) => {
-    const { applicationId } = props;
+    const { applicationId, registerNo, approvedDate } = props;
     const [allApplicationsInfo, setAllApplicationsInfo] = useState({})
     useEffect(() => {
         fetch(`http://localhost:5000/applications/${applicationId}`)
@@ -40,11 +40,11 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                             </div>
                             <div className='birthApplyBg'>
                                 <h2 className='my-5 text-center'>Birth Certificate</h2>
-                                <p className='mt-5'>Registration No: { }</p>
+                                <p className='mt-5'>Registration No: {registerNo}</p>
 
                                 <div className='d-flex align-items-center justify-content-between mb-4'>
                                     <p>Registration Date: {allApplicationsInfo.issueDate}</p>
-                                    <p>Certificate Issue Date: { }</p>
+                                    <p>Certificate Issue Date: {approvedDate}</p>
                                 </div>
                                 <p><span className='fw-bold'>Personal Identification No:</span> {applicationId}</p>
                                 <p className='mt-5'><span className='fw-bold'>Name:</span> {allApplicationsInfo.citizenFullName}</p>
@@ -114,7 +114,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                                     <p><span className='fw-bold'>Address:</span> City/Village/House- {allApplicationsInfo.permanentCVH}, Police Station- {allApplicationsInfo.permanentPoliceStation}, District- {allApplicationsInfo.permanentDistrictName}</p>
                                 </div>
                             </div>
-                            <p className='text-end'> <small>Approved Date: { }</small></p>
+                            <p className='text-end'> <small>Approved Date: {approvedDate}</small></p>
 
                         </div>
                     </Container>}
@@ -167,7 +167,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                                             <p><span className='fw-bold'>Sex: </span>{allApplicationsInfo.citizenGender}</p>
                                         </div>
                                         <div className='col-sm-7'>
-                                            <p><span className='fw-bold'>Date of Issue: </span>{ }</p>
+                                            <p><span className='fw-bold'>Date of Issue: </span>{allApplicationsInfo.approvedDate}</p>
                                         </div>
                                         <div className='col-sm-5'>
                                             <p><span className='fw-bold'>Authority: </span>DIP,DHAKA</p>
