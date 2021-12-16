@@ -108,8 +108,6 @@ const BirthCertificateApplication = () => {
                 <h6>Office of the Registrar of Birth and Death</h6>
                 <p>{userInfo.permanentUPName} Union Parishad</p>
                 <p>{userInfo.permanentPoliceStation}, {userInfo.permanentDistrictName}, Bangladesh</p>
-
-
             </div>
             <div className='birthApplyBg'>
                 <h2 className='mt-5 text-center'>Birth Certificate Application</h2>
