@@ -179,7 +179,6 @@ const CitizenSingleAppliedApplicationModal = (props) => {
                     </Container>
                     }
 
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Close</Button>
