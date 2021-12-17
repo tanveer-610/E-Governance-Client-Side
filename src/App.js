@@ -6,6 +6,7 @@ import CitizenDashBoard from './Pages/CitizenPages/CitizenDashBoard/CitizenDashB
 import CitizenSetProfile from './Pages/CitizenPages/CitizenSetProfile/CitizenSetProfile';
 import NIDApplication from './Pages/CitizenPages/NIDApplication/NIDApplication';
 import PassportApplication from './Pages/CitizenPages/PassportApplication/PassportApplication';
+import UpdateProfile from './Pages/CitizenPages/UpdateProfile/UpdateProfile';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
@@ -47,6 +48,10 @@ function App() {
           <Route path="/passportApply">
             <PassportApplication />
           </Route>
+          <Route path="/updateProfile">
+            <UpdateProfile />
+          </Route>
+
           <Route path="/upDashboard">
             <UPDashboard />
           </Route>
