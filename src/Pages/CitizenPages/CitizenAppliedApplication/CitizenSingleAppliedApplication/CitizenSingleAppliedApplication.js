@@ -8,7 +8,7 @@ import CitizenSingleAppliedApplicationModal from './CitizenSingleAppliedApplicat
 const CitizenSingleAppliedApplication = (props) => {
 
     const { _id, applicationType, applicationStatus
-        , issueDate, approvedDate } = props.application
+        , issueDate, approvedDate, registerNo } = props.application
     const deleteButton = <FontAwesomeIcon icon={faTrashAlt} />
     const showButton = <FontAwesomeIcon icon={faEye} />
     const [allApplication, setAllApplication] = useState([]);
@@ -58,7 +58,7 @@ const CitizenSingleAppliedApplication = (props) => {
                                 <CitizenSingleAppliedApplicationModal
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
-                                    applicationId={_id}
+                                    applicationId={_id} registerNo={registerNo} approvedDate={approvedDate}
                                 /></div>
                         }
                     </div>
