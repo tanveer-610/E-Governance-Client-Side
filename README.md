@@ -18,7 +18,7 @@ This app is created with MERN stack technologies. That means we use HTML5,CSS3,R
 * Responsive based on device size.
   <br/>
 ============================================================== <br/>
-## This project was developed with react,react-bootstrap,firebase,node.js,express.js,mongoDB,heroku
+#### This project was developed with react,react-bootstrap,firebase,node.js,express.js,mongoDB,heroku
 
 ### [E-GOVERNANCE Live site (Click Here To Visualize)](https://e-governance-24df7.web.app/)
 ### [E-GOVERNANCE Heroku Server Link](https://lit-waters-60915.herokuapp.com/)
