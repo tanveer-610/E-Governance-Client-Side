@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import bdLogo from '../../../Assets/bdLogo.svg';
 import useAuth from '../../../hooks/useAuth';
@@ -115,7 +116,7 @@ const NIDApplication = () => {
                 <hr />
                 <p className='text-end text-muted'>Date of Apply: {date}</p>
                 <Form onSubmit={handleForm}>
-                    <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Personal Information</h4>
+                    <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Personal Information</h4>
                     <div className='px-2'>
 
                         <Form.Group className="mb-3" controlId="formGridFullName">
@@ -145,7 +146,7 @@ const NIDApplication = () => {
 
 
 
-                    <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Permanent Address</h4>
+                    <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Permanent Address</h4>
                     <div className='px-2'>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridPermaDistrict">
@@ -180,7 +181,7 @@ const NIDApplication = () => {
 
                         </Row>
                     </div>
-                    <h4 className='border border-3 mt-4 pt-2 bg-dark text-light'>Present Address</h4>
+                    <h4 className='border border-3 mt-4 pt-2 customLabelBG text-light'>Present Address</h4>
                     <small>***Confirm Present address by clicking Every field of this segment***</small>
                     <div className='px-2 mt-4'>
                         <Row className="mb-3 gx-3 ">
@@ -218,7 +219,7 @@ const NIDApplication = () => {
                     </div>
 
 
-                    <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Parental Information</h4>
+                    <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Parental Information</h4>
                     <div className='px-2'>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group as={Col} controlId="formGridFatherName">
@@ -251,13 +252,15 @@ const NIDApplication = () => {
                             </Form.Group>
                         </Row>
                     </div> */}
-
-                    <div className='p-2 mt-5'>
-                        <Button variant="outline-dark" className='fw-bold' type="submit">
+                    <div className='p-2 mt-5 d-flex justify-content-between'>
+                        <Button className='fw-bold buttonStyle' type="submit">
                             Apply
                         </Button>
-
+                        <Button as={NavLink} to="/dashboard" variant='outline-danger' className='fw-bold cancelButtonStyle' >
+                            Cancel
+                        </Button>
                     </div>
+
                 </Form>
             </div>
 

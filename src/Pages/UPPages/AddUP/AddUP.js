@@ -37,7 +37,7 @@ const AddUP = () => {
     return (
         <div className='addUP d-flex justify-content-center align-items-center'>
             <Container className='my-5 shadow shadow-lg border border-5 p-4 rounded rounded-3'>
-                <h3 className='text-center bg-dark text-white py-1 rounded rounded-3'>Add new UP secretary</h3>
+                <h3 className='text-center customLabelBG text-white py-1 rounded rounded-3'>Add new UP secretary</h3>
                 <InputGroup className="my-3">
                     <FormControl
                         placeholder="Write UP's Email..."
@@ -46,7 +46,7 @@ const AddUP = () => {
                         aria-describedby="basic-addon2"
                         onBlur={handleEmail}
                     />
-                    <Button onClick={addUP} variant="outline-dark" id="button-addon2">
+                    <Button onClick={addUP} variant="success" id="button-addon2">
                         Add
                     </Button>
                 </InputGroup>

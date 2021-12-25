@@ -5,7 +5,7 @@ import CitizenSideBar from '../CitizenSideBar/CitizenSideBar';
 import './CitizenDashBoard.css';
 const CitizenDashBoard = () => {
     return (
-        <div className="sidebar-height-fixing">
+        <div>
             <div className="row">
                 <div className="col-sm-12 col-md-3">
                     <CitizenSideBar />

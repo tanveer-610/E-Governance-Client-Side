@@ -13,7 +13,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
             .then(res => res.json())
             .then(data => setAllApplicationsInfo(data))
     }, [])
-    console.log(allApplicationsInfo)
+
     return (
         <div>
             <Modal
@@ -181,7 +181,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button onClick={props.onHide} variant='outline-danger'>Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>

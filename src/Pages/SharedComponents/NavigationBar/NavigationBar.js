@@ -3,6 +3,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../Assets/bdLogo.svg';
+import './NavigationBar.css';
 
 const NavigationBar = () => {
     const { user, logOut } = useAuth();
@@ -16,7 +17,7 @@ const NavigationBar = () => {
     return (
 
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" className="text-white">
+            <Navbar collapseOnSelect expand="lg" className="text-white navbar-bg">
                 <Container>
                     <Navbar.Brand as={NavLink} className="text-white" to="/home">
                         <div className='d-flex align-items-center '>
@@ -40,7 +41,7 @@ const NavigationBar = () => {
                                         <Nav.Link as={NavLink} onClick={logOut} to="/home" className="text-white">Log Out</Nav.Link>
                                     </>
                                     :
-                                    <Nav.Link as={NavLink} className="text-white" to="/login">Log in</Nav.Link>
+                                    <Nav.Link as={NavLink} className="text-white fs-5" to="/login">Log in</Nav.Link>
                             }
                         </Nav>
                     </Navbar.Collapse>

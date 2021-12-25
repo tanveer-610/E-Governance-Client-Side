@@ -1,6 +1,8 @@
 .birthApplyBg{
     background-image: url('../../../Assets/birthBG.png');
     background-size: cover;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;  
+}
+.customLabelBG{
+    background-color: #3A7F4A;
 }

@@ -42,16 +42,16 @@ const CitizenSingleAppliedApplication = (props) => {
     }
     return (
         <Container className='border border-3 mb-3 rounded rounded-3 p-3 shadow shadow-lg'>
-            <h4 className='bg-dark text-light p-2 rounded rounded-3'>{applicationType}</h4>
+            <h4 className='customLabelBG text-light p-2 rounded rounded-3 '>{applicationType}</h4>
             <div className="px-2">
-                <p>Application Status: {applicationStatus}</p>
+                <p><span className='fw-bold'>Application Status: </span>{applicationStatus}</p>
                 <div className="row align-items-center">
                     <div className="col-md-6 col-sm-12">
-                        <p>Applied date: {issueDate}</p>
+                        <p><span className='fw-bold'>Applied Date: </span>{issueDate}</p>
                     </div>
                     <div className="col-md-6 col-sm-12 text-end">
                         {
-                            applicationStatus === "pending" ? <button className='p-0 m-0 fs-4 border border-0 text-dark bg-white' onClick={() => handleDelete(_id)}>{deleteButton}</button> : <div><span>Approved Date: {approvedDate} </span><button className='p-0 m-0 fs-4 border border-0 text-dark bg-white' onClick={() => setModalShow(true)} >
+                            applicationStatus === "pending" ? <button className='p-0 m-0 fs-4 border border-0 text-danger bg-white' onClick={() => handleDelete(_id)}>{deleteButton}</button> : <div><span className='fw-bold'>Approved Date: </span>{approvedDate}&nbsp;&nbsp;&nbsp;<button className='p-0 m-0 fs-4 border border-0 text-success bg-white' onClick={() => setModalShow(true)} >
                                 {showButton}
                             </button>
 

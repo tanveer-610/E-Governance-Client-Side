@@ -9,31 +9,31 @@ const CitizenSideBar = () => {
             <div className="d-flex height-fixing align-items-center">
                 <div className="w-100">
                     <div>
-                        <Button as={NavLink} to="/dashboard" className="w-100 py-2 rounded rounded-0" variant='outline-dark'>Dashboard</Button>
+                        <Button as={NavLink} to="/dashboard" className="w-100 py-2 rounded rounded-0" variant='outline-success'>Dashboard</Button>
                     </div>
                     <div>
-                        <Button as={NavLink} to="/birthCertificateApply" className="w-100 py-2 rounded rounded-0" variant='outline-dark'>
+                        <Button as={NavLink} to="/birthCertificateApply" className="w-100 py-2 rounded rounded-0" variant='outline-success'>
                             Birth Certificate Application
                         </Button>
                     </div>
                     <div>
-                        <Button as={NavLink} to="/NIDApply" className="w-100 py-2 rounded rounded-0" variant='outline-dark'>
+                        <Button as={NavLink} to="/NIDApply" className="w-100 py-2 rounded rounded-0" variant='outline-success'>
                             NID Application
                         </Button>
                     </div>
                     <div>
-                        <Button as={NavLink} to="/passportApply" className="w-100 py-2 rounded rounded-0" variant='outline-dark'>
+                        <Button as={NavLink} to="/passportApply" className="w-100 py-2 rounded rounded-0" variant='outline-success'>
                             Passport Application
                         </Button>
                     </div>
                     <div>
-                        <Button className="w-100 py-2 rounded rounded-0" variant='outline-dark'>
+                        <Button as={NavLink} to="/updateProfile" className="w-100 py-2 rounded rounded-0" variant='outline-success'>
                             Update Profile
                         </Button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

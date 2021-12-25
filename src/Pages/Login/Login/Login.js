@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import loginImg from '../../../Assets/loginImg.png';
+import './Login.css';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -22,27 +24,47 @@ const Login = () => {
     }
     return (
         <Container className="mt-5">
-            <h1 className="text-center text-dark">LOG IN</h1>
-            <div className="border border-3 px-4 py-3 my-5 rounded rounded-3 shadow-lg">
-                <Form onSubmit={handleLoginSubmit}>
-                    <Form.Group className="mb-3" controlId="formGroupEmail">
-                        <Form.Label className="text-dark fw-bold">EMAIL ADDRESS</Form.Label>
-                        <Form.Control type="email" name="email" onChange={handleOnChanged} placeholder="Enter email" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGroupPassword">
-                        <Form.Label className="text-dark fw-bold">PASSWORD</Form.Label>
-                        <Form.Control name="password" onChange={handleOnChanged} type="password" placeholder="Password" />
-                    </Form.Group>
-                    <div className="text-center mb-2">
-                        <Button type="submit" variant="outline-success">Log in</Button>
-                    </div>
+            <div className='ui-container'>
+                <Row className='align-items-center gx-3'>
+                    <Col sm={12} lg={6} className='rounded rounded-3 px-4 py-3'>
+                        <Container>
+                            <h2 className="text-center primary-color">LOG IN</h2>
+                            <Form onSubmit={handleLoginSubmit}>
+                                <Form.Group className="mb-4" controlId="formGroupEmail">
+                                    <FloatingLabel
+                                        controlId="floatingInput"
+                                        label="Email address"
+                                        className="mb-3"
+                                    >
+                                        <Form.Control className='customInputField' type="email" name="email" onChange={handleOnChanged} placeholder="Enter email" />
+                                    </FloatingLabel>
+                                </Form.Group>
+                                <Form.Group className="mb-5" controlId="formGroupPassword">
+                                    <FloatingLabel
+                                        controlId="floatingInput"
+                                        label="Password"
+                                        className="mb-3"
+                                    >
+                                        <Form.Control className='customInputField' name="password" onChange={handleOnChanged} type="password" placeholder="Password" />
+                                    </FloatingLabel>
+                                </Form.Group>
+                                <div className="text-center mb-3">
+                                    <Button type="submit" className='buttonStyle'>Log in</Button>
+                                </div>
 
-                    <div className="text-center">
-                        <NavLink className="text-decoration-none" to="/register">
-                            <Button className="text-secondary" variant="text">New User? Then Register First.</Button>
-                        </NavLink>
-                    </div>
-                </Form>
+                                <div className="text-center">
+                                    <NavLink className="text-decoration-none" to="/register">
+                                        <Button className="text-secondary" variant="text">New User? Then <span className='text-decoration-underline'>Register First</span></Button>
+                                    </NavLink>
+                                </div>
+                            </Form>
+                        </Container>
+                    </Col>
+
+                    <Col sm={12} lg={6} className='my-5' >
+                        <img src={loginImg} className='w-100' alt="" />
+                    </Col>
+                </Row>
             </div>
         </Container>
     );

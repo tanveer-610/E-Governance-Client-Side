@@ -100,10 +100,10 @@ const UpdateProfile = () => {
     }
     return (
         <Container className='my-3 shadow shadow-lg p-3 rounded rounded-3 border border-4'>
-            <h1 className="text-center mb-3">Update Your Profile</h1>
+            <h1 className="text-center mb-3 primary-color">Update Your Profile</h1>
             <div className='text-center text-danger'><small>***If you dont want to change any field, then click on that field for ensuring ***</small></div>
             <Form onSubmit={handleForm}>
-                <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Personal Information</h4>
+                <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Personal Information</h4>
                 <div className='px-2'>
 
 
@@ -120,7 +120,7 @@ const UpdateProfile = () => {
                         </Form.Group>
                     </Row>
                 </div>
-                <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Present Address</h4>
+                <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Present Address</h4>
                 <div className='px-2'>
                     <Row className="mb-3 gx-3 ">
                         <Form.Group as={Col} controlId="formGridDistrict">
@@ -169,7 +169,7 @@ const UpdateProfile = () => {
 
 
                 <div>
-                    <Button variant="outline-dark" className='fw-bold' type="submit">
+                    <Button variant="outline-dark buttonStyle" className='fw-bold' type="submit">
                         Submit
                     </Button>
 

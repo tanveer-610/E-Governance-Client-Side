@@ -1,0 +1,31 @@
+.primary-color{
+    color: #3A7F4A;
+}
+.secondary-color{
+    background-color: #386141;
+    
+}
+.ui-container{
+    height: 80vh;
+}
+.customInputField{
+    border: none;
+    border-bottom: 2px solid gray;
+}
+.buttonStyle{
+    background-color: #3A7F4A;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    padding: 10px 30px 13px 28px;
+    border-radius: 7px;
+}
+.buttonStyle:hover{
+    background-color: #3A7F4A;
+    color: white;
+}
+.cancelButtonStyle{
+    font-size: 1.2rem;
+    padding: 10px 30px 13px 28px;
+    border-radius: 7px;
+}

@@ -37,14 +37,14 @@ const AppliedSingleApplication = (props) => {
     return (
         <div className='col-sm-12 col-md-6 col-lg-4 my-2'>
             <div className='p-2 border border-2 rounded rounded-3'>
-                <h4 className='bg-dark text-white px-2 py-1 rounded rounded-3'>{applicationType}</h4>
+                <h4 className='customLabelBG text-white px-2 py-1 rounded rounded-3'>{applicationType}</h4>
                 <p><span className='fw-bold'>Applicant Name:</span> {citizenFullName}</p>
                 <p>Application Status: {applicationStatus}</p>
                 {
                     applicationStatus === "Approved" ? <p>Approved Date: {approvedDate}</p> :
                         <div className='row align-items-center '>
                             <div className="col-sm-2">
-                                <Button className='py-1' variant='outline-dark' onClick={() => setModalShow(true)} >
+                                <Button className='py-1' variant='outline-success' onClick={() => setModalShow(true)} >
                                     Show
                                 </Button>
 
@@ -64,7 +64,7 @@ const AppliedSingleApplication = (props) => {
                                 </Form.Group>
                             </div>
                             <div className="col-sm-2">
-                                <Button variant='outline-dark' onClick={handleChange}>Change</Button>
+                                <Button variant='outline-danger' onClick={handleChange}>Change</Button>
                             </div>
                         </div>
                 }
