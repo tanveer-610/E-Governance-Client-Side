@@ -376,7 +376,7 @@ const CitizenSetProfile = () => {
 
                 <div>
                     <Button variant="outline-dark" className='fw-bold' type="submit">
-                        Submit
+                        <i className="fas fa-check-circle"></i> Submit
                     </Button>
 
                 </div>

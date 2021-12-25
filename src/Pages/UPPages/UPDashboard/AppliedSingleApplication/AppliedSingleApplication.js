@@ -42,10 +42,10 @@ const AppliedSingleApplication = (props) => {
                 <p>Application Status: {applicationStatus}</p>
                 {
                     applicationStatus === "pending" &&
-                    <div className='row align-items-center '>
+                    <div className='row align-items-center justify-content-center '>
                         <div className="col-sm-2">
                             <Button className='py-1' variant='outline-success' onClick={() => setModalShow(true)} >
-                                Show
+                                <i className="fas fa-eye"></i>
                             </Button>
 
                             <CitizenSingleAppliedApplicationModal
@@ -64,7 +64,7 @@ const AppliedSingleApplication = (props) => {
                             </Form.Group>
                         </div>
                         <div className="col-sm-2">
-                            <Button variant='outline-danger' onClick={handleChange}>Change</Button>
+                            <Button variant='outline-danger' onClick={handleChange}><i className="fas fa-exchange-alt"></i></Button>
                         </div>
                     </div>
                 }

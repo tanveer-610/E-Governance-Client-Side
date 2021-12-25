@@ -77,7 +77,7 @@ const Register = () => {
                                     </FloatingLabel>
                                 </Form.Group>
                                 <div className="text-center mb-2">
-                                    <Button type="submit" className='buttonStyle'>Register</Button>
+                                    <Button type="submit" className='buttonStyle'><i className="fas fa-user-plus"></i> Register</Button>
                                 </div>
 
                                 <div className="text-center">

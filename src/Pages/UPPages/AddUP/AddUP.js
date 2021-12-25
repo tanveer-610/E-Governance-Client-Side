@@ -47,7 +47,7 @@ const AddUP = () => {
                         onBlur={handleEmail}
                     />
                     <Button onClick={addUP} variant="success" id="button-addon2">
-                        Add
+                        <i className="fas fa-user-plus"></i> Add
                     </Button>
                 </InputGroup>
 

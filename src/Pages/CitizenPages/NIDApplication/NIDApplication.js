@@ -254,10 +254,10 @@ const NIDApplication = () => {
                     </div> */}
                     <div className='p-2 mt-5 d-flex justify-content-between'>
                         <Button className='fw-bold buttonStyle' type="submit">
-                            Apply
+                            <i className="fas fa-check-circle"></i> Apply
                         </Button>
                         <Button as={NavLink} to="/dashboard" variant='outline-danger' className='fw-bold cancelButtonStyle' >
-                            Cancel
+                            <i className="fas fa-times"></i> Cancel
                         </Button>
                     </div>
 

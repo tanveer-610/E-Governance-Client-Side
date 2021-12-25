@@ -181,7 +181,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide} variant='outline-danger'>Close</Button>
+                    <Button onClick={props.onHide} variant='outline-danger'><i className="fas fa-times"></i> Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>

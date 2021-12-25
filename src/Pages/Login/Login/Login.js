@@ -33,7 +33,7 @@ const Login = () => {
                                 <Form.Group className="mb-4" controlId="formGroupEmail">
                                     <FloatingLabel
                                         controlId="floatingInput"
-                                        label="Email address"
+                                        label="Email Address"
                                         className="mb-3"
                                     >
                                         <Form.Control className='customInputField' type="email" name="email" onChange={handleOnChanged} placeholder="Enter email" />
@@ -49,7 +49,7 @@ const Login = () => {
                                     </FloatingLabel>
                                 </Form.Group>
                                 <div className="text-center mb-3">
-                                    <Button type="submit" className='buttonStyle'>Log in</Button>
+                                    <Button type="submit" className='buttonStyle'><i className="fas fa-sign-in-alt"></i> Log in </Button>
                                 </div>
 
                                 <div className="text-center">

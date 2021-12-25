@@ -289,7 +289,7 @@ const PassportApplication = () => {
 
 
 
-                    <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Attachments</h4>
+                    {/* <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Attachments</h4>
                     <div className='px-2'>
                         <Row className="mb-3 gx-3 ">
                             <Form.Group controlId="formFile" className="mb-3">
@@ -297,14 +297,14 @@ const PassportApplication = () => {
                                 <Form.Control className='w-50' type="file" />
                             </Form.Group>
                         </Row>
-                    </div>
+                    </div> */}
 
                     <div className='p-2 mt-5 d-flex justify-content-between'>
                         <Button className='fw-bold buttonStyle' type="submit">
-                            Apply
+                            <i className="fas fa-check-circle"></i> Apply
                         </Button>
                         <Button as={NavLink} to="/dashboard" variant='outline-danger' className='fw-bold cancelButtonStyle' >
-                            Cancel
+                            <i className="fas fa-times"></i> Cancel
                         </Button>
                     </div>
                 </Form>

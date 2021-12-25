@@ -13,7 +13,7 @@ const UPDashboard = () => {
     var today = new Date();
     var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
     return (
-        <Container className='my-4'>
+        <Container className='my-5 pb-5'>
             <p className='text-end text-muted'>Today is : {date}</p>
             <div className="row">
                 {
