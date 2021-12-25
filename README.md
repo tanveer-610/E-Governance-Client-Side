@@ -20,9 +20,7 @@ This app is created with MERN stack technologies. That means we use HTML5,CSS3,R
 ============================================================== <br/>
 #### This project was developed with react,react-bootstrap,firebase,node.js,express.js,mongoDB,heroku
 
-### [E-GOVERNANCE Live site (Click Here To Visualize)](https://e-governance-24df7.web.app/)
-### [E-GOVERNANCE Heroku Server Link](https://lit-waters-60915.herokuapp.com/)
-
-### [E-GOVERNANCE Client site (Click Here To Visualize)](https://github.com/tanveer-610/E-Governance-Client-Side)
-
-### [E-GOVERNANCE Server site (Click Here To Visualize)](https://github.com/tanveer-610/E-Governance-Server-Side)
+#### [E-GOVERNANCE Live site (Click Here To Visualize)](https://e-governance-24df7.web.app/)
+#### [E-GOVERNANCE Heroku Server Link](https://lit-waters-60915.herokuapp.com/)
+#### [E-GOVERNANCE Client site (Click Here To Visualize)](https://github.com/tanveer-610/E-Governance-Client-Side)
+#### [E-GOVERNANCE Server site (Click Here To Visualize)](https://github.com/tanveer-610/E-Governance-Server-Side)
