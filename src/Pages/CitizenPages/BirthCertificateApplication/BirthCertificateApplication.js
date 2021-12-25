@@ -18,7 +18,7 @@ const BirthCertificateApplication = () => {
     const history = useHistory()
     const userEmail = user.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${userEmail}`)
+        fetch(`https://lit-waters-60915.herokuapp.com/users/${userEmail}`)
             .then(res => res.json())
             .then(data => setUserInfo(data))
     }, [])
@@ -80,7 +80,7 @@ const BirthCertificateApplication = () => {
                 issueDate: date,
                 approvedDate: ""
             }
-            axios.post('http://localhost:5000/allApplications', data)
+            axios.post('https://lit-waters-60915.herokuapp.com/allApplications', data)
                 .then(res => {
                     if (res.data.insertedId) {
                         alert("Application has been Submitted");

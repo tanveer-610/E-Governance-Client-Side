@@ -13,6 +13,7 @@ import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Register from './Pages/Login/Register/Register';
 import Footer from './Pages/SharedComponents/Footer/Footer';
 import NavigationBar from './Pages/SharedComponents/NavigationBar/NavigationBar';
+import PageNotFound from './Pages/SharedComponents/PageNotFound/PageNotFound';
 import AddUP from './Pages/UPPages/AddUP/AddUP';
 import UPDashboard from './Pages/UPPages/UPDashboard/UPDashboard';
 
@@ -62,6 +63,9 @@ function App() {
             <AddUP />
           </PrivateRoute>
 
+          <Route path='*'>
+            <PageNotFound />
+          </Route>
         </Switch>
         <Footer />
       </BrowserRouter>

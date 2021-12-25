@@ -22,7 +22,7 @@ const AppliedSingleApplication = (props) => {
             approvedDate: date
         }
         console.log(data)
-        axios.put(`http://localhost:5000/applicationStatus/${_id}`, data)
+        axios.put(`https://lit-waters-60915.herokuapp.com/applicationStatus/${_id}`, data)
             .then(response => {
                 alert('Updated Successfully');
 

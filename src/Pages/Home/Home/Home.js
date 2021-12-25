@@ -9,7 +9,7 @@ const Home = () => {
     const [userInfo, setUserInfo] = useState({});
     const userEmail = user.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${userEmail}`)
+        fetch(`https://lit-waters-60915.herokuapp.com/users/${userEmail}`)
             .then(res => res.json())
             .then(data => setUserInfo(data))
     }, [userEmail])

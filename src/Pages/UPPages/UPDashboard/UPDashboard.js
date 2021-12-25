@@ -6,7 +6,7 @@ import AppliedSingleApplication from './AppliedSingleApplication/AppliedSingleAp
 const UPDashboard = () => {
     const [applications, setApplications] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/applications')
+        fetch('https://lit-waters-60915.herokuapp.com/applications')
             .then(res => res.json())
             .then(data => setApplications(data))
     }, [])

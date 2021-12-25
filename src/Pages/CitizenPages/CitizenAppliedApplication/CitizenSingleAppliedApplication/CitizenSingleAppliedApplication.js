@@ -15,14 +15,14 @@ const CitizenSingleAppliedApplication = (props) => {
     const [modalShow, setModalShow] = React.useState(false);
     const history = useHistory()
     useEffect(() => {
-        fetch(`http://localhost:5000/applications`)
+        fetch(`https://lit-waters-60915.herokuapp.com/applications`)
             .then(res => res.json())
             .then(data => setAllApplication(data))
     }, [])
     const handleDelete = id => {
         const procceed = window.confirm("Are you sure? If you are... Click OK")
         if (procceed) {
-            const url = `http://localhost:5000/applicationDelete/${id}`;
+            const url = `https://lit-waters-60915.herokuapp.com/applicationDelete/${id}`;
 
             fetch(url, {
                 method: 'DELETE'

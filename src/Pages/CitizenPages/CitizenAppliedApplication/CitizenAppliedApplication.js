@@ -8,7 +8,7 @@ const CitizenAppliedApplication = () => {
     const [applications, setApplications] = useState([])
     const userEmail = user.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/applications`)
+        fetch(`https://lit-waters-60915.herokuapp.com/applications`)
             .then(res => res.json())
             .then(data => setApplications(data))
     }, [])

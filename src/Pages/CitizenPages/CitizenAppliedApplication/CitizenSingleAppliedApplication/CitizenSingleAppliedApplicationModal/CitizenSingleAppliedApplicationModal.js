@@ -9,7 +9,7 @@ const CitizenSingleAppliedApplicationModal = (props) => {
     const { applicationId, registerNo, approvedDate } = props;
     const [allApplicationsInfo, setAllApplicationsInfo] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/applications/${applicationId}`)
+        fetch(`https://lit-waters-60915.herokuapp.com/applications/${applicationId}`)
             .then(res => res.json())
             .then(data => setAllApplicationsInfo(data))
     }, [])

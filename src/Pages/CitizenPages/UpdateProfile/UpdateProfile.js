@@ -9,7 +9,7 @@ const UpdateProfile = () => {
     const [userInfo, setUserInfo] = useState({})
     const userEmail = user.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${userEmail}`)
+        fetch(`https://lit-waters-60915.herokuapp.com/users/${userEmail}`)
             .then(res => res.json())
             .then(data => setUserInfo(data))
     }, [userEmail])
@@ -83,7 +83,7 @@ const UpdateProfile = () => {
                 presentCVH: preCVH
             }
 
-            axios.put(`http://localhost:5000/updateUser/${user.email}`, data)
+            axios.put(`https://lit-waters-60915.herokuapp.com/updateUser/${user.email}`, data)
                 .then(response => {
                     alert('Updated Successfully')
                     history.push('/dashboard')

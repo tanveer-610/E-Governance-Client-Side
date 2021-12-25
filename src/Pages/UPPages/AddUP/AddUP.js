@@ -15,7 +15,7 @@ const AddUP = () => {
                 role: "admin"
             }
 
-            axios.put(`http://localhost:5000/admin/${upEmail}`, data)
+            axios.put(`https://lit-waters-60915.herokuapp.com/admin/${upEmail}`, data)
                 .then(response => {
                     alert('Updated Successfully');
                     setUpEmail("");

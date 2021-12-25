@@ -151,7 +151,7 @@ const CitizenSetProfile = () => {
                 citizenMotherNID: motherNID
             }
 
-            axios.put(`http://localhost:5000/user/${user.email}`, data)
+            axios.put(`https://lit-waters-60915.herokuapp.com/user/${user.email}`, data)
                 .then(response => {
                     alert('Updated Successfully')
                     history.push('/dashboard')
