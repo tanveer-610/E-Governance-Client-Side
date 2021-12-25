@@ -18,20 +18,20 @@ const AddUP = () => {
             axios.put(`http://localhost:5000/admin/${upEmail}`, data)
                 .then(response => {
                     alert('Updated Successfully');
-                    setUpEmail("")
+                    setUpEmail("");
                 })
                 .catch(error => {
                     alert('Not Updated')
                     console.log(error);
                 });
-            e.target.value = ""
+            e.target.value = "";
         }
 
         else {
-            alert("Enter Email First")
+            alert("Enter Email First");
         }
 
-        e.preventDefault()
+        e.preventDefault();
     }
 
     return (

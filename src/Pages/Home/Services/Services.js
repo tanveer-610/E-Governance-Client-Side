@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import birth from '../../../Assets/birthCer.png';
@@ -6,6 +5,7 @@ import nid from '../../../Assets/nid.jpg';
 import passport from '../../../Assets/passportCertificate.jpg'
 import './Services.css'
 const Services = () => {
+
     return (
         <Container className='my-5'>
             <h2 className='primary-color text-center my-5'>Our Services</h2>
@@ -18,7 +18,7 @@ const Services = () => {
                             <p className="card-text text-muted">Without giving any kind of heavy information you will able to apply for Birth Certificate just with click.</p>
                         </div>
                         <div className="card-footer">
-                            <Button as={NavLink} to="/" variant='success w-100'>Apply Now</Button>
+                            <Button as={NavLink} to="/birthCertificateApply" variant='success w-100'>Apply Now</Button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ const Services = () => {
                             <p className="card-text text-muted">Same user information is used automatically by the system with your consent is in your hand.</p>
                         </div>
                         <div className="card-footer">
-                            <Button as={NavLink} to="/" variant='success w-100'>Apply Now</Button>
+                            <Button as={NavLink} to="/NIDApply" variant='success w-100'>Apply Now</Button>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const Services = () => {
                             <p className="card-text text-muted">Heavy user info is not mandatory for apply. It is very flexible to apply, user friendly and also hassle free. </p>
                         </div>
                         <div className="card-footer">
-                            <Button as={NavLink} to="/" variant='success w-100'>Apply Now</Button>
+                            <Button as={NavLink} to="/passportApply" variant='success w-100'>Apply Now</Button>
                         </div>
                     </div>
                 </div>

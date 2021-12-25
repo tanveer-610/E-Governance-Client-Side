@@ -34,7 +34,7 @@ const CitizenSingleAppliedApplication = (props) => {
                         setAllApplication(remaining);
                         alert("data is deleted");
                         //reload page
-                        history.go(0)
+
                     }
                 })
         }

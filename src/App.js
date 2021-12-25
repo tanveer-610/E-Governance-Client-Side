@@ -9,6 +9,7 @@ import PassportApplication from './Pages/CitizenPages/PassportApplication/Passpo
 import UpdateProfile from './Pages/CitizenPages/UpdateProfile/UpdateProfile';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Register from './Pages/Login/Register/Register';
 import Footer from './Pages/SharedComponents/Footer/Footer';
 import NavigationBar from './Pages/SharedComponents/NavigationBar/NavigationBar';
@@ -35,31 +36,31 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/setUserProfile">
+          <PrivateRoute path="/setUserProfile">
             <CitizenSetProfile />
-          </Route>
-          <Route path="/dashboard">
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
             <CitizenDashBoard />
-          </Route>
-          <Route path="/birthCertificateApply">
+          </PrivateRoute>
+          <PrivateRoute path="/birthCertificateApply">
             <BirthCertificateApplication />
-          </Route>
-          <Route path="/NIDApply">
+          </PrivateRoute>
+          <PrivateRoute path="/NIDApply">
             <NIDApplication />
-          </Route>
-          <Route path="/passportApply">
+          </PrivateRoute>
+          <PrivateRoute path="/passportApply">
             <PassportApplication />
-          </Route>
-          <Route path="/updateProfile">
+          </PrivateRoute>
+          <PrivateRoute path="/updateProfile">
             <UpdateProfile />
-          </Route>
+          </PrivateRoute>
 
-          <Route path="/upDashboard">
+          <PrivateRoute path="/upDashboard">
             <UPDashboard />
-          </Route>
-          <Route path="/addUP">
+          </PrivateRoute>
+          <PrivateRoute path="/addUP">
             <AddUP />
-          </Route>
+          </PrivateRoute>
 
         </Switch>
         <Footer />

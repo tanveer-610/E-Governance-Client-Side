@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const UpdateProfile = () => {
@@ -168,11 +168,13 @@ const UpdateProfile = () => {
 
 
 
-                <div>
-                    <Button variant="outline-dark buttonStyle" className='fw-bold' type="submit">
-                        Submit
+                <div className='p-2 mt-5 d-flex justify-content-between'>
+                    <Button className='fw-bold buttonStyle' type="submit">
+                        Apply Changes
                     </Button>
-
+                    <Button as={NavLink} to="/dashboard" variant='outline-danger' className='fw-bold cancelButtonStyle' >
+                        Cancel
+                    </Button>
                 </div>
             </Form>
         </Container >
