@@ -173,9 +173,9 @@ const CitizenSetProfile = () => {
 
     return (
         <Container className='my-3 shadow shadow-lg p-3 rounded rounded-3 border border-4'>
-            <h1 className="text-center mb-3">Set Your Profile</h1>
+            <h1 className="text-center mb-3 primary-color">Set Your Profile</h1>
             <Form onSubmit={handleForm}>
-                <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Personal Information</h4>
+                <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Personal Information</h4>
                 <div className='px-2'>
                     <Row className="mb-3 gx-5">
                         <Form.Group as={Col} controlId="formGridFirstName">
@@ -266,7 +266,7 @@ const CitizenSetProfile = () => {
 
 
 
-                <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Permanent Address</h4>
+                <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Permanent Address</h4>
                 <div className='px-2'>
                     <Row className="mb-3 gx-3 ">
                         <Form.Group as={Col} controlId="formGridPermaDistrict">
@@ -301,7 +301,7 @@ const CitizenSetProfile = () => {
 
                     </Row>
                 </div>
-                <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Present Address</h4>
+                <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Present Address</h4>
                 <div className='px-2'>
                     <Row className="mb-3 gx-3 ">
                         <Form.Group as={Col} controlId="formGridDistrict">
@@ -338,7 +338,7 @@ const CitizenSetProfile = () => {
                 </div>
 
 
-                <h4 className='border border-3 mt-4 p-2 bg-dark text-light'>Parental Information</h4>
+                <h4 className='border border-3 mt-4 p-2 customLabelBG text-light'>Parental Information</h4>
                 <div className='px-2'>
                     <Row className="mb-3 gx-3 ">
                         <Form.Group as={Col} controlId="formGridFatherName">
@@ -374,8 +374,8 @@ const CitizenSetProfile = () => {
 
 
 
-                <div>
-                    <Button variant="outline-dark" className='fw-bold' type="submit">
+                <div className="mt-4">
+                    <Button className='fw-bold buttonStyle' type="submit">
                         <i className="fas fa-check-circle"></i> Submit
                     </Button>
 
